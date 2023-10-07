@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla :: header"/>
+
+
+
+        <table border="1">
+            <tr>
+                <th>ID Seccion</th>
+                <th>numero_mostrar</th>
+                <th>Seccion</th>
+
+            </tr>
+
+            <tr th:each="mesas: ${mesas1}">
+                <td th:text="${mesas.idmesas}">ID</td>
+                <td th:text="${mesas.numero_mostrar}">Seccion</td>
+                <td th:text="${mesas.secciones_idsecciones}">Seccion</td>
+                <!--                <td><a th:href="@{/editar(idpadron=${padron.idpadron})} ">Editar</td>
+                                   <td><a th:href="@{/eliminar(idpadron=${padron.idpadron})} ">Eliminar</td>-->
+            </tr>
+        </table>
+    </div>
+    <!--        
+                <div  th:if="${secciones == null and secciones.empty}">
+                    La lista de personas esta vacia-->
+</div>
+<br/>
+<footer th:replace="layout/plantilla :: footer"/>
+</body>
+</html>
