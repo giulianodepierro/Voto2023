@@ -1,44 +1,31 @@
 <!doctype html>
-<html xmlns:th="http://thymeleaf.org" 
-      xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Padron</title>
-        <meta charset="UTF-8"/>
-     
-    </head>
-    <body>
-    <header th:replace="layout/plantilla :: header"/>
-    <h2>Datos De la persona</h2>
-        <a th:href="@{/}">Regresar</a>
-  
-        <form  th:action="@{/guardar}" method="post" th:object="${padron}">
-        <input type="hidden" name="idpadron" th:field="*{idpadron}"><!-- comment -->
-            <br/>
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" th:field="*{nombre}"/>
-        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
-        <br/>    
-        <label for="apellido">Apellido:</label>
-        <input type="text" name="apellido" th:field="*{apellido}"/>        
-          <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error Apellido</span>
-        <br/>
-        <label for="dniTipo">Tipo Documento</label>
-        <input type="text" name="dniTipo" th:field="*{dni_tipo}"/>
-          <span th:if="${#fields.hasErrors('dni_tipo')}" th:errors="}*{dni_tipo}">Error DNI Tipo </span>
-        <br/>        
-        <label for="documento">N°Doc:</label>
-        <input type="text" name="documento" th:field="*{dni_numero}"/>
-          <span th:if="${#fields.hasErrors('dni_numero')}" th:errors="*{dni_numero}">Error DNI Numero</span>
-        <br/>  
-        <label for="id_mesas">Mesa n°:</label>
-        <input type="number"  min="0" max="10" name="id_mesas" 
-                th:field="*{mesas_idmesas}"/>
-        
-        <input type="submit" name="guardar" value="guardar"/> 
-        <td><a th:href="@{/eliminar(idpadron=${padron.idpadron})} ">Eliminar</td>
-               
-        </form>
-       <br/>
-       <footer th:replace="layout/plantilla :: footer"></footer>
-    </body>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Inicio</title>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+
+<header th:replace="layout/plantilla :: header"/>
+
+<a th:href="@{/agregar}">Crear Persona</a>
+<a th:href="@{/secciones}">Ver Secciones</a>
+<a th:href="@{/mesas}">Mesas</a>
+
+>
+
+    <ul th:each="padron: ${padron1}">
+        <li th:utext="'<b>Nombre: </b>' + ${padron.nombre}"></li>
+         <li th:utext="'<b>Apellido: </b>' +${padron.apellido}"></li>
+        <li  th:utext="'<b>Tipo DNi: </b>' +${padron.dni_tipo}"></li>
+         <li th:utext="'<b>N° DNI: </b>' +${padron.dni_numero}"></li>
+        <li th:if="${padron.mesas_idmesas}==1"><b th:utext="'<b>Nombre: </b>' + ${padron.nombre}"></b> </li>
+        <li><a th:href="@{/modificar(idpadron=${padron.idpadron})}"/>Editar</li>
+        <li><a th:href="@{/eliminar(idpadron=${padron.idpadron})}"/>Eliminar</li>
+    </ul>
+
+<br/>
+<footer th:replace="layout/plantilla :: footer"/>
+</body>
 </html>

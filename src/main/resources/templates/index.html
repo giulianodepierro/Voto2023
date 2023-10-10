@@ -30,12 +30,13 @@
                 <td  th:text="${padron.dni_tipo}">DNI_Tipo</td> 
                 <td th:text="${padron.dni_numero}">DNI_Numero</td>    
                 <td th:text="${padron.mesas_idmesas}">Mesa</td>   
-                <td><a th:href="@{/editar(idpadron=${padron.idpadron})} ">Editar</td>
-                   <td><a th:href="@{/eliminar(idpadron=${padron.idpadron})} ">Eliminar</td>
+                <td><a th:href="@{/modificar(idpadron=${padron.idpadron})} ">Editar</td>
+                   <td><a th:href="@{/modificar(idpadron=${padron.idpadron})} ">Eliminar</td>
             </tr>
         </table>
         </div>
-        
+
+
             <div  th:if="${padrones == null and padrones.empty}">
                 La lista de personas esta vacia
         </div>
