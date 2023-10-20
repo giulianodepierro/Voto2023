@@ -23,4 +23,28 @@ public class TipoDocumento implements Serializable {
     @NotEmpty
     @Column(name = "abreviada")
     private String abreviada;
+
+    public Long getIddoc() {
+        return iddoc;
+    }
+
+//    public void setIddoc(Long iddoc) {
+//        this.iddoc = iddoc;
+//    }
+
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
+    public String getAbreviada() {
+        return abreviada;
+    }
+
+    public void setAbreviada(String abreviada) {
+        this.abreviada = abreviada;
+    }
 }

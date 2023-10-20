@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/plantilla :: head">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+    </head>
+<body>
+<header th:replace="layout/plantilla :: header1"></header>
+    <h1>Datos de la persona</h1>
+
+    <br>
+    <form th:action="@{/guardar}" method="POST" th:object="${padron}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" th:field="*{nombre}"/>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido" th:field="*{apellido}"/>
+
+        <label for="dni_tipo">DNI Tipo:</label>
+        <input type="number" name="dni_tipo" th:field="*{dni_tipo}"/>
+<!--        <select class="form-select" aria-label="Default select example" >-->
+<!--            <option name="dni_tipo" selected>Open this select menu</option>-->
+<!--            <option th:each="tipoDocumento: ${tiposDoc}" th:value="${tipoDocumento.iddoc}" th:text="${tipoDocumento.detalle}">Texto del Padron</option>-->
+
+<!--        </select>-->
+        <label for="dni_numero">DNI Numero:</label>
+        <input type="text" name="dni_numero" th:field="*{dni_numero}"/>
+
+        <label for="mesas_idmesas">Mesas:</label>
+        <input type="text" name="mesas_idmesas" th:field="*{mesas_idmesas}"/>
+        <input type="submit" name="guardar" value="guardar"/>
+
+
+
+    </form>
+
+<footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+</html>

@@ -1,30 +1,23 @@
 <!doctype html>
 <html xmlns:th="http://thymeleaf.org">
-<head>
-    <title>Inicio</title>
-    <meta charset="UTF-8">
+<head th:replace="layout/plantilla :: head"/>
+>
 
 </head>
 <body>
+<header th:replace="layout/plantilla :: header1"/>
 
-<header th:replace="layout/plantilla :: header"/>
-
-<a th:href="@{/agregar}">Crear Persona</a>
-<a th:href="@{/secciones}">Ver Secciones</a>
-<a th:href="@{/mesas}">Mesas</a>
-
->
-
+<div class="container py-2">
     <ul th:each="padron: ${padron1}">
         <li th:utext="'<b>Nombre: </b>' + ${padron.nombre}"></li>
-         <li th:utext="'<b>Apellido: </b>' +${padron.apellido}"></li>
-        <li  th:utext="'<b>Tipo DNi: </b>' +${padron.dni_tipo}"></li>
-         <li th:utext="'<b>N° DNI: </b>' +${padron.dni_numero}"></li>
-        <li th:if="${padron.mesas_idmesas}==1"><b th:utext="'<b>Nombre: </b>' + ${padron.nombre}"></b> </li>
+        <li th:utext="'<b>Apellido: </b>' +${padron.apellido}"></li>
+        <li th:utext="'<b>Tipo DNi: </b>' +${padron.dni_tipo}"></li>
+        <li th:utext="'<b>N° DNI: </b>' +${padron.dni_numero}"></li>
+        <li th:if="${padron.mesas_idmesas}==1"><b th:utext="'<b>Nombre: </b>' + ${padron.nombre}"></b></li>
         <li><a th:href="@{/modificar(idpadron=${padron.idpadron})}"/>Editar</li>
         <li><a th:href="@{/eliminar(idpadron=${padron.idpadron})}"/>Eliminar</li>
     </ul>
-
+</div>
 <br/>
 <footer th:replace="layout/plantilla :: footer"/>
 </body>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/plantilla :: head"/>
+>
+
+</head>
+<body>
+<header th:replace="layout/plantilla :: header1"/>
+
+
+<table border="1" table table-index>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+     </tr>
+
+    <tr th:each="candidatos: ${candidatos}">
+        <td th:text="${candidatos.nombre}">Nombre</td>
+        <td th:text="${candidatos.apellido}">Apellido</td>
+
+    </tr>
+</table>
+</div>
+
+<footer th:replace="layout/plantilla :: footer"/>
+</body>
+</html>

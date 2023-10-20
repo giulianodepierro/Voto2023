@@ -10,6 +10,7 @@ public interface PadronDao  {
 
     List getPadron();
 
+    void guardar(Padron padron);
 
 
 

@@ -24,6 +24,12 @@ public class PabronDaoImpl implements  PadronDao {
     }
 
 
+
+    @Transactional(readOnly = false)
+    public void guardar(Padron padron) {
+        entityManager.merge(padron);
+    }
+
     @Override
     public List<Padron> obtenerUsuarioPorId(Long idpadron) {
         String query = "FROM Padron WHERE idpadron = :idpadron";

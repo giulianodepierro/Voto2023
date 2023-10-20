@@ -1,6 +1,7 @@
 package junin.gob.ar.domain;
 
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -26,9 +27,8 @@ public class Padron implements Serializable {
     private String dni_numero;
     private int es_agregado;
 
-    private int dni_tipo;
 
-
+    private  int dni_tipo;
     private int mesas_idmesas;
 
 
@@ -66,6 +66,14 @@ public class Padron implements Serializable {
 
     }
 
+    public int getDni_tipo() {
+        return dni_tipo;
+    }
+
+    public void setDni_tipo(int dni_tipo) {
+        this.dni_tipo = dni_tipo;
+    }
+
     public String getDni_numero() {
         return dni_numero;
     }
@@ -82,13 +90,6 @@ public class Padron implements Serializable {
         this.es_agregado = es_agregado;
     }
 
-    public int getDni_tipo() {
-        return dni_tipo;
-    }
-
-    public void setDni_tipo(int dni_tipo) {
-        this.dni_tipo = dni_tipo;
-    }
 
     public int getMesas_idmesas() {
         return mesas_idmesas;
