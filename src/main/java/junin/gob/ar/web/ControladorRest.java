@@ -3,7 +3,9 @@ package junin.gob.ar.web;
 import junin.gob.ar.dao.CandidatosDao;
 import junin.gob.ar.dao.PadronDao;
 
+import junin.gob.ar.dao.VotosDao;
 import junin.gob.ar.domain.Padron;
+import junin.gob.ar.domain.Votos;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,8 @@ public class ControladorRest {
 
     @Autowired
     private CandidatosDao candidatosDao;
+    @Autowired
+    private VotosDao votosDao;
 
     @RequestMapping(value = "api/padron")
     public List<Padron> getVistaPadron(){
@@ -31,7 +35,10 @@ public class ControladorRest {
 
         return candidatosDao.getCandidatos();
     }
-
+    @RequestMapping(value = "api/votos")
+    public List<Votos> getVistaVotos(){
+        return votosDao.getVotos();
+    }
 
 }
 

@@ -25,7 +25,7 @@ public class PabronDaoImpl implements  PadronDao {
 
 
 
-    @Transactional(readOnly = false)
+
     public void guardar(Padron padron) {
         entityManager.merge(padron);
     }
@@ -39,19 +39,5 @@ public class PabronDaoImpl implements  PadronDao {
         return lista;
     }
 
-
-//
-//       @Override
-//           public Padron obtenerUsuarioPorId() {
-//           String query = "FROM Padron WHERE idpadron = :idPadron";
-//           List<Padron> lista = entityManager.createQuery(query)
-//                   .setParameter("idpadron", padron.getIdpadron())
-//                   .getResultList();
-//
-//           if (lista.isEmpty()) {
-//           }
-//           return lista.get(0) ;
-//       }
-//               return null;
 
 }

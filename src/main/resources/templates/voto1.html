@@ -1,0 +1,35 @@
+    <!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/plantilla :: head">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+    </head>
+<body>
+<header th:replace="layout/plantilla :: header1"></header>
+<h1>Datos de la persona</h1>
+
+<br>
+<form th:action="@{/emitirVoto}" method="POST" th:object="${votos}">
+<!--    <label for="idCandidatos">Canidatos:</label>-->
+<!--    <input type="number" name="idCandidatos" th:field="*{idCandidatos}"/>-->
+
+    <label for="cantidadVotos">Votos</label>
+    <input type="number" name="cantidadVotos" th:field="*{cantidadVotos}"/>
+
+    <input type="submit" name="emitirVoto" value="emitirVoto"/>
+</form>
+
+<footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/plantilla :: head">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+    </head>
+<body>
+<header th:replace="layout/plantilla :: header1"></header>
+<h1>Datos de la persona</h1>
+
+<br>
+<form th:action="@{/guardar}" method="POST" th:object="${candidatos}">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" th:field="*{nombre}"/>
+
+    <label for="apellido0">Apellido:</label>
+    <input type="text" name="apellido" th:field="*{apellido}"/>
+
+    <label for="idListas">Lista:</label>
+    <input type="number" name="dni_tipo" th:field="*{idListas}"/>
+    <!--        <select class="form-select" aria-label="Default select example" >-->
+    <!--            <option name="dni_tipo" selected>Open this select menu</option>-->
+    <!--            <option th:each="tipoDocumento: ${tiposDoc}" th:value="${tipoDocumento.iddoc}" th:text="${tipoDocumento.detalle}">Texto del Padron</option>-->
+
+    <!--        </select>-->
+    <label for="idSecciones">Escuela:</label>
+    <input type="text" name="idSecciones" th:field="*{idSecciones}"/>
+
+    <input type="submit" name="guardar" value="guardar"/>
+
+
+
+</form>
+
+<footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+</html>

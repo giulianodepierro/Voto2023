@@ -1,27 +1,29 @@
 <!doctype html>
 <html xmlns:th="http://thymeleaf.org">
 <head th:replace="layout/plantilla :: head"/>
->
 
 </head>
 <body>
 <header th:replace="layout/plantilla :: header1"/>
+<div class="cards">
+
+    <a th:each="candidato : ${candidatos}"
+       th:href="@{'/emitirVoto?idCandidatos=' + ${candidato.idCandidatos} + '&cantidadVotos=1'}">
+        <div class="card">
+            <div class="card__image-holder">
+                <img class="card__image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+            </div>
+            <div class="card-title">
+                <h2 th:text="${candidato.nombre} + ' ' + ${candidato.apellido}"></h2>
+            </div>
+        </div>
+    </a>
 
 
-<table border="1" table table-index>
-    <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-     </tr>
-
-    <tr th:each="candidatos: ${candidatos}">
-        <td th:text="${candidatos.nombre}">Nombre</td>
-        <td th:text="${candidatos.apellido}">Apellido</td>
-
-    </tr>
-</table>
 </div>
 
+
 <footer th:replace="layout/plantilla :: footer"/>
+<script src="../static/action.js"></script>
 </body>
 </html>
