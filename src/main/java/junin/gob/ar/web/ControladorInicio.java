@@ -44,19 +44,18 @@ public class ControladorInicio {
     }
 
     @GetMapping("/index")
-    public String hola(Model model) {
-        var padrones = padronDao.getPadron();
+    public String hola(Model model, @RequestParam String usuario, @RequestParam String clave) {
+        if ( "alejo".equals(usuario) &&  "ale".equals(clave)) {
+         var padrones = padronDao.getPadron();
         model.addAttribute("padrones", padrones);
         return "index";
+
+        } else {
+            return "login";
+        }
     }
 
-//    @GetMapping("/voto")
-//    public String mostrarCandidatos(Model model, Votos votos) {
-//        var candidatos = candidatosDao.getCandidatos();
-//   model.addAttribute("candidatos", candidatos);
-////    votosDao.votar(votos);
-//        return "voto";
-//    }
+
     @GetMapping("/modificar")
     public String buscar(@RequestParam("idpadron") Long idpadron, Model model) {
 
@@ -76,6 +75,18 @@ public class ControladorInicio {
     public String guardar(@ModelAttribute Padron padron){
         padronDao.guardar(padron);
         return "index";
+    }
+
+
+    @GetMapping("/login")
+    public String agregarVoto(@RequestParam String usuario, @RequestParam String clave) {
+        if (usuario == "alejo" && clave == "ale") {
+            // Llamar al método votar en el DAO para agregar el registro en la base de datos
+
+            return "index";
+        } else {
+            return "login";
+        }
     }
 
 }

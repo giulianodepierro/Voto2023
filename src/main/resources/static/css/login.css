@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+    font-family: Lato;
+}
+
+body{
+font-family: Lato !important;
+}
+
+
+
+#body-login {
+    background-image: url('../img/Fondo.jpg');
+    background-size: 100vw 100vw;
+    background-repeat: no-repeat;
+    background-position: left top;
+    padding-bottom: 100px;
+}
+
+.img-half-size {
+    width: 50%;
+    height: auto;
+}
+
+
+.label-width {
+    width: 100px; /* Puedes ajustar el valor según tus necesidades */
+    font-family: Lato;
+}
+
+.card-header-gris{
+color : gray;
+}
