@@ -10,11 +10,15 @@ import junin.gob.ar.domain.Padron;
 import junin.gob.ar.domain.Votos;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RequestMapping("/api")
 @RestController
 @Slf4j
 public class ControladorRest {
@@ -43,10 +47,12 @@ public class ControladorRest {
     public List<Votos> getVistaVotos(){
         return votosDao.getVotos();
     }
-    @RequestMapping(value = "api/autoridades")
+    @RequestMapping(value = "autoridades")
     public List<Autoridad> getVistaAutoridades(){
         return autoridadDao.getAutoridades();
     }
+
+
 
 }
 

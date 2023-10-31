@@ -3,10 +3,8 @@ package junin.gob.ar.web;
 //import javax.validation.Valid;
 
 //import junin.gob.ar.servicio.PadronService;
-import junin.gob.ar.dao.CandidatosDao;
-import junin.gob.ar.dao.PadronDao;
-import junin.gob.ar.dao.TipoDocumentoDao;
-import junin.gob.ar.dao.VotosDao;
+import junin.gob.ar.dao.*;
+import junin.gob.ar.domain.Autoridad;
 import junin.gob.ar.domain.Padron;
 import junin.gob.ar.domain.Votos;
 import lombok.extern.slf4j.Slf4j;
@@ -25,12 +23,8 @@ public class ControladorInicio {
     private CandidatosDao candidatosDao;
     @Autowired
     private TipoDocumentoDao tipoDocumentoDao;
-
-//    @Autowired
-//    public ControladorInicio(VotosDao votosDao) {
-//        this.votosDao = votosDao;
-//    }
-
+    @Autowired
+    private AutoridadDao autoridadDao;
     @GetMapping("/")
     public String login() {
         return "login";
@@ -45,7 +39,9 @@ public class ControladorInicio {
 
     @GetMapping("/index")
     public String hola(Model model, @RequestParam String usuario, @RequestParam String clave) {
-        if ( "alejo".equals(usuario) &&  "ale".equals(clave)) {
+        Autoridad usuarioLogeo= autoridadDao.buscarAutoridadUsuarioClave(usuario,clave);
+
+        if ( usuarioLogeo.getUsuario().equals(usuario) &&  usuarioLogeo.getClaveUsuario().equals(clave)) {
          var padrones = padronDao.getPadron();
         model.addAttribute("padrones", padrones);
         return "index";
@@ -55,7 +51,12 @@ public class ControladorInicio {
         }
     }
 
-
+    @GetMapping("/editar")
+    public String editar(Padron padron,Long idPadron, Model model){
+        var  padron1 = padronDao.obtenerUsuarioPorId((idPadron));
+        model.addAttribute("padron", padron1);
+        return "agregarPersona";
+    }
     @GetMapping("/modificar")
     public String buscar(@RequestParam("idpadron") Long idpadron, Model model) {
 
@@ -64,12 +65,8 @@ public class ControladorInicio {
     return "modificar";
     }
 
-    @GetMapping("/editar")
-    public String editar(Padron padron,Long idPadron, Model model){
-      var  padron1 = padronDao.obtenerUsuarioPorId((idPadron));
-        model.addAttribute("padron", padron1);
-        return "agregarPersona";
-    }
+
+
 
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Padron padron){

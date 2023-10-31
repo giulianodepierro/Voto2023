@@ -23,4 +23,14 @@ public class AutoridadDaoImpl implements AutoridadDao {
 
         return lista;
     }
+
+    @Override
+    public Autoridad buscarAutoridadUsuarioClave(String usuario, String clave) {
+        String query = "FROM Autoridad WHERE usuario = :usuario AND claveUsuario =:clave";
+        Autoridad lista = (Autoridad) entityManager.createQuery(query, Autoridad.class)
+                .setParameter("usuario", usuario)
+                .setParameter("clave", clave)
+                .getSingleResult();
+        return lista;
+    }
 }
