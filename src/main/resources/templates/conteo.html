@@ -1,0 +1,16 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout/plantilla :: head">
+    <link rel="stylesheet" href="cards.css">
+    <link rel="stylesheet" href="estilos-pesonalizados.css">
+    |</head>
+
+<body>
+
+<h2 class="conteo"> Total de votos</h2>
+
+<h3 class="conteo" th:text="${cantVotos}"> 7 </h3>
+    <footer th:replace="layout/plantilla :: footer"/>
+</div>
+</body>
+</html>

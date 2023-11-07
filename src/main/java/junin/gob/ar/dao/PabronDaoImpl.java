@@ -17,9 +17,8 @@ public class PabronDaoImpl implements  PadronDao {
 
     @Override
     public List getPadron(){
-        String query= "FROM Padron";
-        List<Padron> lista = entityManager.createQuery(query).getResultList();
-
+        String query= " FROM Padron";
+        List<Padron> lista = entityManager.createQuery(query, Padron.class).getResultList();
         return lista;
     }
 
@@ -31,13 +30,13 @@ public class PabronDaoImpl implements  PadronDao {
     }
 
     @Override
-    public List<Padron> obtenerUsuarioPorId(Long idpadron) {
-        String query = "FROM Padron WHERE idpadron = :idpadron";
+    public List<Padron> obtenerUsuarioPorId(Long idPadron) {
+        String query = "FROM Padron WHERE idPadron = :idpadron";
         List<Padron> lista = entityManager.createQuery(query, Padron.class)
-                .setParameter("idpadron", idpadron)
+                .setParameter("idpadron", idPadron)
                 .getResultList();
         return lista;
     }
-
+//
 
 }

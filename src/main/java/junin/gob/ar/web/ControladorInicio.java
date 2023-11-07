@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @Slf4j
 public class ControladorInicio {
-
+  String sesionUsuario;
+  String sesionClave
     @Autowired
     private PadronDao padronDao;
     @Autowired
@@ -30,6 +31,13 @@ public class ControladorInicio {
         return "login";
     }
 
+    @GetMapping("/verPadron")
+    public String agregar(Model model){
+        var pabrones= padronDao.getPadron();
+        model.addAttribute("padrones", pabrones);
+        return "index";
+    }
+
     @GetMapping("/agregar")
     public String agregar(Model model, Padron padron){
         var tiposDoc  = tipoDocumentoDao.getTipoDoc();
@@ -37,14 +45,14 @@ public class ControladorInicio {
         return "agregarPersona";
     }
 
-    @GetMapping("/index")
+    @PostMapping("/index")
     public String hola(Model model, @RequestParam String usuario, @RequestParam String clave) {
         Autoridad usuarioLogeo= autoridadDao.buscarAutoridadUsuarioClave(usuario,clave);
 
         if ( usuarioLogeo.getUsuario().equals(usuario) &&  usuarioLogeo.getClaveUsuario().equals(clave)) {
          var padrones = padronDao.getPadron();
         model.addAttribute("padrones", padrones);
-        return "index";
+        return "nuevoIndex";
 
         } else {
             return "login";

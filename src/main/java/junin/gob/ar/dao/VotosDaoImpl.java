@@ -2,7 +2,7 @@ package junin.gob.ar.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import junin.gob.ar.domain.Padron;
+
 import junin.gob.ar.domain.Votos;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,4 +29,11 @@ public class VotosDaoImpl implements VotosDao{
         entityManager.merge(votos);
     }
 
+    public Long getCantVotos(){
+      String query="SELECT COUNT(*) FROM Votos";
+                Long cantRegistros= (Long) entityManager.createQuery(query,Long.class)
+               .getSingleResult();
+
+        return cantRegistros;
+    }
 }

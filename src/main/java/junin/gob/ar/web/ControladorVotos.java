@@ -33,6 +33,12 @@ public class ControladorVotos {
         return "voto";
     }
 
+    @GetMapping("/conteo")
+    public String contarVotos(Model model, Votos votos) {
+        var contadorVotos = votosDao.getCantVotos();
+        model.addAttribute("cantVotos", contadorVotos);
+        return "conteo";
+    }
 
     @GetMapping("/emitirVoto")
     public String agregarVoto(@RequestParam int idCandidatos, @RequestParam int cantidadVotos) {

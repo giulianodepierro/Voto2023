@@ -14,7 +14,7 @@ public interface PadronDao  {
 
 
 
-//    List obtenerUsuarioPorId(Long idPadron);
+   List obtenerUsuarioPorId(Long idPadron);
 
-    List<Padron> obtenerUsuarioPorId(Long idPadron);
+//    List<Padron> obtenerUsuarioPorId(Long idPadron);
 }

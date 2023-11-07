@@ -1,6 +1,7 @@
 package junin.gob.ar.domain;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -18,36 +19,32 @@ public class Padron implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     private Long idpadron;
-    
+
     @NotEmpty // esta anotacion sirve para validar que el campo nombre no sea nulo
     private String nombre;
     private String apellido;
-    
 
-    private String dni_numero;
-    private int es_agregado;
+    @Column(name = "dni_numero")
+    private String dniNumero;
 
-
-    private  int dni_tipo;
-    private int mesas_idmesas;
+    @Column(name = "es_agregado")
+    private int agregado;
 
 
-//    @OneToOne
-//    @JoinColumn(name =  "mesas_idmesas")
-//    private  Mesas  mesas;
-//
-//    @OneToOne
-//    @JoinColumn(name = "dni_tipo")
-//
-//    private  TipoDocumento tipoDocumento;
+    @Column(name = "mesas_idmesas")
+    private int mesa;
+
+
+
+    @JoinColumn(name = "id") // Asegúrate de que coincida con el nombre de la columna en la tabla de TipoDocumento
+    private TipoDocumento tipoDocumento;
+
 
     public Long getIdpadron() {
         return idpadron;
     }
 
-    public void setIdpadron(Long idpadron) {
-        this.idpadron = idpadron;
-    }
+
 
     public String getNombre() {
         return nombre;
@@ -63,39 +60,31 @@ public class Padron implements Serializable {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
-
     }
 
-    public int getDni_tipo() {
-        return dni_tipo;
+    public String getDniNumero() {
+        return dniNumero;
     }
 
-    public void setDni_tipo(int dni_tipo) {
-        this.dni_tipo = dni_tipo;
+    public void setDniNumero(String dniNumero) {
+        this.dniNumero = dniNumero;
     }
 
-    public String getDni_numero() {
-        return dni_numero;
+    public int getAgregado() {
+        return agregado;
     }
 
-    public void setDni_numero(String dni_numero) {
-        this.dni_numero = dni_numero;
+    public void setAgregado(int agregado) {
+        this.agregado = agregado;
     }
 
-    public int getEs_agregado() {
-        return es_agregado;
+    public int getMesa() {
+        return mesa;
     }
 
-    public void setEs_agregado(int es_agregado) {
-        this.es_agregado = es_agregado;
+    public void setMesa(int mesa) {
+        this.mesa = mesa;
     }
 
 
-    public int getMesas_idmesas() {
-        return mesas_idmesas;
-    }
-
-    public void setMesas_idmesas(int mesas_idmesas) {
-        this.mesas_idmesas = mesas_idmesas;
-    }
 }

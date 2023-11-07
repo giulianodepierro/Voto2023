@@ -9,4 +9,6 @@ public interface VotosDao {
     void votar(Votos votos);
 
     List<Votos> getVotos();
+
+    Long getCantVotos();
 }

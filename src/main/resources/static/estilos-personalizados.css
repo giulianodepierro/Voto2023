@@ -15,13 +15,24 @@
 @darkGrey: #4f585e;
 
 body {
-  background: @lightBG;
-  color: @darkGrey;
+  background-image: url('../img/Fondo.jpg');
+      background-size: 100vw 100vw;
+      background-repeat: no-repeat;
+      background-position: left top;
+      padding-bottom: 100px;
+  --color: @darkGrey;
   font-family: 'Source Sans Pro', sans-serif;
   text-rendering: optimizeLegibility;
 }
+ h2 {
+ color:rgb(255, 255, 255);
+ padding:10;
+background-image: url('../img/Fondo.jpg');
+ }
+
 
 a.btn {
+  }
   background: @teal;
   border-radius: 4px;
 	box-shadow: 0 2px 0px 0 rgba(0,0,0,0.25);
@@ -127,6 +138,8 @@ div.card {
     }
   }
 
+
+
   div.card-description {
     padding: 0 15px 10px;
     position: relative;
@@ -156,6 +169,17 @@ div.card {
   }
 
 }
+
+h2.conteo{
+   color:red;
+   text-align:center;
+   background:white;
+  }
+  h3.conteo{
+    color: #2fb4cc;
+    text-align:center;
+   }
+ 
 
 div.cards.showing {
   div.card {

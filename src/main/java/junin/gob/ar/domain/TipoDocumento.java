@@ -14,7 +14,7 @@ public class TipoDocumento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipodoc")
-    private Long iddoc;
+    private Long idDoc;
 
     @NotEmpty
     @Column(name = "denominacion")
@@ -24,8 +24,8 @@ public class TipoDocumento implements Serializable {
     @Column(name = "abreviada")
     private String abreviada;
 
-    public Long getIddoc() {
-        return iddoc;
+    public Long getIdDoc() {
+        return idDoc;
     }
 
 //    public void setIddoc(Long iddoc) {

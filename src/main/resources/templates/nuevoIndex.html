@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
+        <link rel="stylesheet" href="cards.css">
+        <link rel="stylesheet" href="estilos-pesonalizados.css">
+    |</head>
+
+    <body>
+    <div class="container py-2">
+    <header th:replace="layout/plantilla :: header1"></header>
+    <!--   Tarjetas-->
+    <div class="title-cards">
+        <h2 class="seccion">Voto Electronico - Sección San Jorge - Mesa 16 </h2>
+    </div>
+    <div class="container-card">
+
+        <div class="card">
+            <a th:href="@{/verPadron}">
+                <figure>
+                    <img src="img/magnifying-glass-solid.svg" class="icono">
+                </figure>
+                <div class="contenido-card">
+                    <h3>Consultar Padron</h3>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a th:href="@{/agregar}" onclick="window.open('agregar', 'NombreVentana', 'width=400,height=400'); return false;">
+            <figure>
+                    <img src="img/user-solid.svg">
+                </figure>
+                <div class="contenido-card">
+                    <h3>Habilitar Voto</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="card">
+            <a th:href="@{/conteo}" onclick="window.open('conteo', 'NombreVentana', 'width=400,height=400'); return false;">
+                <figure>
+                    <img src="img/envelope-solid.svg">
+                </figure>
+                <div class="contenido-card">
+                    <h3>Conteo De Votos</h3>
+
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="#">
+                <figure>
+                    <img src="img/file-solid.svg">
+                </figure>
+                <div class="contenido-card">
+                    <h3>Planilla Apertura</h3>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="#">
+                <figure>
+                    <img src="img/lock-solid.svg">
+                </figure>
+                <div class="contenido-card">
+                    <h3>Cierre Planilla</h3>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+        <footer th:replace="layout/plantilla :: footer"/>
+    </div>
+    </body>
+</html>
