@@ -18,33 +18,10 @@ public class TipoDocumento implements Serializable {
 
     @NotEmpty
     @Column(name = "denominacion")
-    private  String  detalle;
+    private String detalle;
 
     @NotEmpty
     @Column(name = "abreviada")
     private String abreviada;
 
-    public Long getIdDoc() {
-        return idDoc;
-    }
-
-//    public void setIddoc(Long iddoc) {
-//        this.iddoc = iddoc;
-//    }
-
-    public String getDetalle() {
-        return detalle;
-    }
-
-    public void setDetalle(String detalle) {
-        this.detalle = detalle;
-    }
-
-    public String getAbreviada() {
-        return abreviada;
-    }
-
-    public void setAbreviada(String abreviada) {
-        this.abreviada = abreviada;
-    }
 }

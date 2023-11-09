@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @Slf4j
 public class ControladorInicio {
-  String sesionUsuario;
-  String sesionClave
+
+    //estas dos variables van a guardar el usuario toda la sesion
+       public String sesionUsuario;
+   public String sesionClave;
+   public int mesaAutoridad;
+
     @Autowired
     private PadronDao padronDao;
     @Autowired
@@ -33,8 +37,8 @@ public class ControladorInicio {
 
     @GetMapping("/verPadron")
     public String agregar(Model model){
-        var pabrones= padronDao.getPadron();
-        model.addAttribute("padrones", pabrones);
+        var padrones= padronDao.getPadron();
+        model.addAttribute("padrones", padrones);
         return "index";
     }
 
@@ -47,10 +51,16 @@ public class ControladorInicio {
 
     @PostMapping("/index")
     public String hola(Model model, @RequestParam String usuario, @RequestParam String clave) {
-        Autoridad usuarioLogeo= autoridadDao.buscarAutoridadUsuarioClave(usuario,clave);
 
-        if ( usuarioLogeo.getUsuario().equals(usuario) &&  usuarioLogeo.getClaveUsuario().equals(clave)) {
+        Autoridad usuarioLogeo= autoridadDao.buscarAutoridadUsuarioClave(usuario,clave);
+         mesaAutoridad= usuarioLogeo.getIdMesas();
+        System.out.println("mesaAutoridad: " + mesaAutoridad);
+        sesionClave = clave;
+        sesionUsuario=usuario;
+
+        if ( usuarioLogeo.getUsuario().equals(sesionUsuario) &&  usuarioLogeo.getClaveUsuario().equals(sesionClave)) {
          var padrones = padronDao.getPadron();
+
         model.addAttribute("padrones", padrones);
         return "nuevoIndex";
 
@@ -59,6 +69,12 @@ public class ControladorInicio {
         }
     }
 
+
+
+    @GetMapping("/inicio")
+    public String volver() {
+       return "nuevoIndex";
+    }
     @GetMapping("/editar")
     public String editar(Padron padron,Long idPadron, Model model){
         var  padron1 = padronDao.obtenerUsuarioPorId((idPadron));

@@ -25,9 +25,9 @@
     <tr th:each="padron: ${padrones}">
         <td th:text="${padron.nombre}">Nombre</td>
         <td th:text="${padron.apellido}">Apellido</td>
-        <td th:text="${padron.dniNumero}">DNI_Tipo</td>
+        <td th:text="${padron.tipoDocumento.abreviada}">DNI_Tipo</td>
         <td th:text="${padron.dniNumero}">DNI_Numero</td>
-        <td th:text="${padron.mesa}">Mesa</td>
+        <td th:text="${padron.mesas.numero_mostrar}">Mesa</td>
         <td><a th:href="@{/modificar}"/>Editar</td>
         <td><a th:href="@{/modificar(idpadron=${padron.idpadron})} ">Eliminar</td>
     </tr>

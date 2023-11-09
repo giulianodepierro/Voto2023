@@ -16,5 +16,7 @@ public interface PadronDao  {
 
    List obtenerUsuarioPorId(Long idPadron);
 
+   List obtenerPadrondeMesa(int idMesas);
+
 //    List<Padron> obtenerUsuarioPorId(Long idPadron);
 }

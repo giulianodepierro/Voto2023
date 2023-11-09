@@ -49,6 +49,11 @@ public class ControladorRest {
         return autoridadDao.getAutoridades();
     }
 
+    @RequestMapping(value = "autoridad")
+    public Autoridad getVistaAutoridad(){
+        return  autoridadDao.buscarAutoridadUsuarioClave("usuario1","user11");
+    }
+
     @RequestMapping(value = "votosCantidad")
     public Long cantVotos(){
         return votosDao.getCantVotos();

@@ -15,13 +15,16 @@ public class PabronDaoImpl implements  PadronDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+// Limpia la caché de JPA (EntityManager)
+
+private  AutoridadDao autoridadDao;
     @Override
     public List getPadron(){
+
         String query= " FROM Padron";
         List<Padron> lista = entityManager.createQuery(query, Padron.class).getResultList();
-        return lista;
+       return lista;
     }
-
 
 
 
@@ -37,6 +40,14 @@ public class PabronDaoImpl implements  PadronDao {
                 .getResultList();
         return lista;
     }
-//
+//listar mesas por id mesas obenidas segun quien se lolega
+
+    public List<Padron> obtenerPadrondeMesa(int idMesas ){
+        String query = "FROM Padron WHERE mesa = : idMesas";
+        List <Padron> lista = entityManager.createQuery(query, Padron.class)
+                .setParameter("idMesas", idMesas)
+                .getResultList();
+        return lista;
+    }
 
 }

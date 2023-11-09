@@ -17,74 +17,25 @@ public class Padron implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
+
     private Long idpadron;
 
-    @NotEmpty // esta anotacion sirve para validar que el campo nombre no sea nulo
     private String nombre;
     private String apellido;
+
+    @ManyToOne
+
+
+    @JoinColumn(name = "dni_tipo")
+    private  TipoDocumento tipoDocumento;
 
     @Column(name = "dni_numero")
     private String dniNumero;
 
+    @ManyToOne
+    @JoinColumn(name = "mesas_idmesas")
+    private Mesas mesas;
+
     @Column(name = "es_agregado")
     private int agregado;
-
-
-    @Column(name = "mesas_idmesas")
-    private int mesa;
-
-
-
-    @JoinColumn(name = "id") // Asegúrate de que coincida con el nombre de la columna en la tabla de TipoDocumento
-    private TipoDocumento tipoDocumento;
-
-
-    public Long getIdpadron() {
-        return idpadron;
     }
-
-
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getDniNumero() {
-        return dniNumero;
-    }
-
-    public void setDniNumero(String dniNumero) {
-        this.dniNumero = dniNumero;
-    }
-
-    public int getAgregado() {
-        return agregado;
-    }
-
-    public void setAgregado(int agregado) {
-        this.agregado = agregado;
-    }
-
-    public int getMesa() {
-        return mesa;
-    }
-
-    public void setMesa(int mesa) {
-        this.mesa = mesa;
-    }
-
-
-}

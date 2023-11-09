@@ -18,18 +18,18 @@
         <label for="apellido">Apellido:</label>
         <input type="text" name="apellido" th:field="*{apellido}"/>
 
-        <label for="dni_tipo">DNI Tipo:</label>
-        <input type="number" name="dni_tipo" th:field="*{dni_tipo}"/>
-<!--        <select class="form-select" aria-label="Default select example" >-->
-<!--            <option name="dni_tipo" selected>Open this select menu</option>-->
-<!--            <option th:each="tipoDocumento: ${tiposDoc}" th:value="${tipoDocumento.iddoc}" th:text="${tipoDocumento.detalle}">Texto del Padron</option>-->
+        <label for="tipoDocumento">DNI Tipo:</label>
+        <input type="number" name="tipoDocumento" th:field="*{tipoDocumento.idDoc}"/>
+<!--&lt;!&ndash;        <select class="form-select" aria-label="Default select example" >&ndash;&gt;-->
+<!--            <option name=tipoDocumento" selected>Open this select menu</option>-->
+<!--            <option th:each="tipoDocumento: ${tipoDocumento}" th:value="${tipoDocumento.idDoc}" th:text="${tipoDocumento.detalle}">Texto del Padron</option>-->
 
 <!--        </select>-->
-        <label for="dni_numero">DNI Numero:</label>
-        <input type="text" name="dni_numero" th:field="*{dni_numero}"/>
+        <label for="dniNumero">DNI Numero:</label>
+        <input type="text" name="dniNumero" th:field="*{dniNumero}"/>
 
-        <label for="mesas_idmesas">Mesas:</label>
-        <input type="text" name="mesas_idmesas" th:field="*{mesas_idmesas}"/>
+        <label for="mesas">Mesas:</label>
+        <input type="text" name="mesas" th:field="*{mesas}"/>
         <input type="submit" name="guardar" value="guardar"/>
 
 

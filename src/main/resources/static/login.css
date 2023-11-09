@@ -10,13 +10,15 @@ font-family: Lato !important;
 
 
 #body-login {
-    background-image: url('../img/Fondo.jpg');
+    background-image: url('img/Fondo.jpg');
     background-size: 100vw 100vw;
     background-repeat: no-repeat;
     background-position: left top;
     padding-bottom: 100px;
 }
-
+#login{
+background-image: url('img/Fondo.jpg');
+}
 .img-half-size {
     width: 50%;
     height: auto;
