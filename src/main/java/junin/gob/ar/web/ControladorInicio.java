@@ -110,4 +110,8 @@ public class ControladorInicio {
         }
     }
 
+    @GetMapping("/bs")
+    public String probarLogin() {
+        return  "loginBostrap";
+    }
 }
