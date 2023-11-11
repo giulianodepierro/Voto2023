@@ -37,7 +37,8 @@ public class ControladorInicio {
 
     @GetMapping("/verPadron")
     public String agregar(Model model){
-        var padrones= padronDao.getPadron();
+        Long mesa = autoridadDao.obtenerIdMesas(sesionUsuario,sesionClave);
+        var padrones= padronDao.getPadronPorMesa(mesa);
         model.addAttribute("padrones", padrones);
         return "index";
     }
@@ -53,15 +54,15 @@ public class ControladorInicio {
     public String hola(Model model, @RequestParam String usuario, @RequestParam String clave) {
 
         Autoridad usuarioLogeo= autoridadDao.buscarAutoridadUsuarioClave(usuario,clave);
-         mesaAutoridad= usuarioLogeo.getIdMesas();
-        System.out.println("mesaAutoridad: " + mesaAutoridad);
+//         mesaAutoridad= usuarioLogeo.getIdMesas();
+//        System.out.println("mesaAutoridad: " + mesaAutoridad);
         sesionClave = clave;
         sesionUsuario=usuario;
 
         if ( usuarioLogeo.getUsuario().equals(sesionUsuario) &&  usuarioLogeo.getClaveUsuario().equals(sesionClave)) {
-         var padrones = padronDao.getPadron();
-
-        model.addAttribute("padrones", padrones);
+//         var padrones = padronDao.getPadron();
+//
+//        model.addAttribute("padrones", padrones);
         return "nuevoIndex";
 
         } else {

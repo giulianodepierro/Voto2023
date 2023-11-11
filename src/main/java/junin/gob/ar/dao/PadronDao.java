@@ -10,6 +10,8 @@ public interface PadronDao  {
 
     List getPadron();
 
+    List getPadronPorMesa(Long mesas);
+
     void guardar(Padron padron);
 
 

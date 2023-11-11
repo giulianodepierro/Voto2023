@@ -8,4 +8,6 @@ public interface AutoridadDao {
     List getAutoridades();
 
     Autoridad buscarAutoridadUsuarioClave(String usuario, String clave);
+
+    Long obtenerIdMesas(String usuario, String clave);
 }

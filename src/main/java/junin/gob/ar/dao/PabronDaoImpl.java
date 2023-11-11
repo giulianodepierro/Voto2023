@@ -27,6 +27,16 @@ private  AutoridadDao autoridadDao;
     }
 
 
+    @Override
+    public List getPadronPorMesa(Long mesas){
+
+        String query= " FROM Padron WHERE mesas.idmesas = :idMesa";
+        List<Padron> lista = entityManager.createQuery(query, Padron.class)
+                .setParameter("idMesa", mesas)
+                .getResultList();
+        return lista;
+    }
+
 
     public void guardar(Padron padron) {
         entityManager.merge(padron);

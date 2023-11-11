@@ -21,64 +21,15 @@ public class Autoridad {
     @Column (name = "superusuario")
     private String superUsuario;
 
-    @Column (name = "clave_super")
+    @Column ( name = "clave_super")
     private String claveSuper;
     @Column (name = "clave_usuario")
     private String claveUsuario;
 
-    @Column (name = "mesa_idmesa")
-    private int idMesas;
-
-    public Long getIdAutoridad() {
-        return idAutoridad;
-    }
+    @ManyToOne
+    @JoinColumn(name = "mesas_idmesas")
+    private Mesas mesas;
 
 
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getSuperUsuario() {
-        return superUsuario;
-    }
-
-    public void setSuperUsuario(String superUsuario) {
-        this.superUsuario = superUsuario;
-    }
-
-    public String getClaveSuper() {
-        return claveSuper;
-    }
-
-    public void setClaveSuper(String claveSuper) {
-        this.claveSuper = claveSuper;
-    }
-
-    public String getClaveUsuario() {
-        return claveUsuario;
-    }
-
-    public void setClaveUsuario(String claveUsuario) {
-        this.claveUsuario = claveUsuario;
-    }
-
-    public int getIdMesas() {
-        return idMesas;
-    }
-
-    public void setIdMesas(int idMesas) {
-        this.idMesas = idMesas;
-    }
 }
