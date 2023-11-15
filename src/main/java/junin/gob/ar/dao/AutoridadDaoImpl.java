@@ -1,7 +1,6 @@
 package junin.gob.ar.dao;
 
 import junin.gob.ar.domain.Autoridad;
-import junin.gob.ar.domain.Mesas;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,5 +39,12 @@ public class AutoridadDaoImpl implements AutoridadDao {
      Long numeroMesa= buscarAutoridadUsuarioClave(usuario, clave).getMesas().getIdmesas();
      return numeroMesa;
     }
+
+    @Override
+    public int obtenerIdSecciones(String usuario, String clave){
+        int seccion= buscarAutoridadUsuarioClave(usuario, clave).getMesas().getSecciones_idsecciones();
+        return seccion;
+    }
+
 }
 

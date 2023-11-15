@@ -42,7 +42,7 @@ public class ControladorRest {
         Long mesa = autoridadDao.obtenerIdMesas("usuario2","user22");
         return padronDao.getPadronPorMesa(mesa);
     }
-    @RequestMapping(value = "api/candidatos")
+    @RequestMapping(value = "candidatos")
     public List<Padron> getVistaCandidatos(){
 
         return candidatosDao.getCandidatos();

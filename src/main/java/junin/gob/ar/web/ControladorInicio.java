@@ -8,6 +8,7 @@ import junin.gob.ar.domain.Autoridad;
 import junin.gob.ar.domain.Padron;
 import junin.gob.ar.domain.Votos;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,11 @@ public class ControladorInicio {
     //estas dos variables van a guardar el usuario toda la sesion
        public String sesionUsuario;
    public String sesionClave;
-   public int mesaAutoridad;
+public Long mesa;
+
+
+    @Autowired
+    private VotosDao votosDao;
 
     @Autowired
     private PadronDao padronDao;
@@ -36,8 +41,10 @@ public class ControladorInicio {
     }
 
     @GetMapping("/verPadron")
+
     public String agregar(Model model){
-        Long mesa = autoridadDao.obtenerIdMesas(sesionUsuario,sesionClave);
+
+      mesa = autoridadDao.obtenerIdMesas(sesionUsuario,sesionClave);
         var padrones= padronDao.getPadronPorMesa(mesa);
         model.addAttribute("padrones", padrones);
         return "index";
@@ -76,6 +83,8 @@ public class ControladorInicio {
     public String volver() {
        return "nuevoIndex";
     }
+
+
     @GetMapping("/editar")
     public String editar(Padron padron,Long idPadron, Model model){
         var  padron1 = padronDao.obtenerUsuarioPorId((idPadron));
@@ -114,5 +123,38 @@ public class ControladorInicio {
     @GetMapping("/bs")
     public String probarLogin() {
         return  "loginBostrap";
+    }
+
+
+    @GetMapping("/voto")
+    public String mostrarCandidatos(Model model, Votos votos) {
+      var  seccion = autoridadDao.obtenerIdSecciones(sesionUsuario,sesionClave);
+        System.out.println("Usuario logueado:" + sesionUsuario);
+        var candidatos = candidatosDao.getCandidatosPorSeccion((long) seccion);
+        model.addAttribute("candidatos", candidatos);
+
+        return "voto";
+    }
+
+    @GetMapping("/conteo")
+    public String contarVotos(Model model, Votos votos) {
+        var contadorVotos = votosDao.getCantVotos();
+        model.addAttribute("cantVotos", contadorVotos);
+        return "conteo";
+    }
+
+    @GetMapping("/emitirVoto")
+    public String agregarVoto(@RequestParam int idCandidatos, @RequestParam int cantidadVotos) {
+
+
+
+        // Crear un objeto Votos con idCandidatos=1 y cantidadVotos=1
+        Votos votos = new Votos();
+        votos.setIdCandidatos(idCandidatos);
+        votos.setCantidadVotos(cantidadVotos);
+
+        // Llamar al método votar en el DAO para agregar el registro en la base de datos
+        votosDao.votar(votos);
+        return "index";
     }
 }

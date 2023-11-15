@@ -3,27 +3,31 @@
 <head th:replace="layout/plantilla :: head"/>
 
 </head>
+
 <body>
-<header th:replace="layout/plantilla :: header1"/>
-<div class="cards">
-
-    <a th:each="candidato : ${candidatos}"
-       th:href="@{'/emitirVoto?idCandidatos=' + ${candidato.idCandidatos} + '&cantidadVotos=1'}">
-        <div class="card">
-            <div class="card__image-holder">
-                <img class="card__image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+<div class="container py-2">
+    <header th:replace="layout/plantilla :: header1"></header>
+    <!--   Tarjetas-->
+    <div class="title-cards">
+        <h2 class="seccion">Voto Electronico - Sección San Jorge - Mesa 16 </h2>
+    </div>
+    <div class="container-card">
+        <a th:each="candidato : ${candidatos}"
+           th:href="@{'/emitirVoto?idCandidatos=' + ${candidato.idCandidatos} + '&cantidadVotos=1'}">
+            <div class="card">
+                <a th:href="@{/inicio}">
+                    <figure>
+                        <img src="img/yo.jpg" class="icono">
+                    </figure>
+                    <div class="card-title">
+                        <h2 th:text="${candidato.nombre} + ' ' + ${candidato.apellido}"></h2>
+                    </div>
+                </a>
             </div>
-            <div class="card-title">
-                <h2 th:text="${candidato.nombre} + ' ' + ${candidato.apellido}"></h2>
-            </div>
-        </div>
-    </a>
-
-
+        </a>
+    </div>
+    <footer th:replace="layout/plantilla :: footer"/>
 </div>
-
-
-<footer th:replace="layout/plantilla :: footer"/>
-<script src="../static/action.js"></script>
 </body>
 </html>
+

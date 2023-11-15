@@ -21,7 +21,10 @@ public class Candidatos {
     @Column(name = "listas_idlistas")
     private int idListas;
 
-    @Column(name = "secciones_idsecciones")
-    private int idSecciones;
+
+    @ManyToOne
+    @JoinColumn(name = "secciones_idsecciones")
+    private Secciones secciones;
+
 
 }
